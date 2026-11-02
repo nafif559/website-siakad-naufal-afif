@@ -1,3 +1,10 @@
+<!--
+Nama            : Naufal Afif
+NIM             : 3202416082
+Kelas           : 5C-TIF
+Nama file       : app.blade.php
+Tanggal edit    : 1-11-2026
+-->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -20,6 +27,8 @@
             @include('layouts.partials.sidebar')
 
             <main class="col-lg-9 col-xl-10 px-3 px-md-4 py-4">
+                @include('layouts.partials.flash')    
+
                 @yield('content')
 
                 <footer class="text-center text-body-secondary small mt-5">

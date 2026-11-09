@@ -17,6 +17,8 @@ Tanggal edit    : 1-11-2026
     <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.min.css') }}"
           rel="stylesheet">
     <link href="{{ asset('css/siakad.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/sweetalert2/sweetalert2.min.css') }}"
+          rel="stylesheet">
     @stack('styles')
 </head>
 <body class="bg-body-tertiary">
@@ -26,8 +28,7 @@ Tanggal edit    : 1-11-2026
         <div class="row">
             @include('layouts.partials.sidebar')
 
-            <main class="col-lg-9 col-xl-10 px-3 px-md-4 py-4">
-                @include('layouts.partials.flash')    
+            <main class="col-lg-9 col-xl-10 px-3 px-md-4 py-4">    
 
                 @yield('content')
 
@@ -39,8 +40,9 @@ Tanggal edit    : 1-11-2026
         </div>
     </div>
 
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}">
-    </script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/sweetalert2/sweetalert2.all.min.js') }}"></script>
+    @include('layouts.partials.flash')
     @stack('scripts')
 </body>
 </html>

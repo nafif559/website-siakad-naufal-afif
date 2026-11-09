@@ -32,8 +32,23 @@ Tanggal buat    : 1-11-2026
                 </div>
 
                 <div class="mb-3">
-                    <x-form-input label="Kata Sandi" name="password" type="password"
-                                  autocomplete="current-password" required />
+                    <label for="password" class="form-label">Kata Sandi</label>
+
+                    <div class="input-group">
+                        <input type="password"
+                            class="form-control"
+                            id="password"
+                            name="password"
+                            autocomplete="current-password"
+                            required>
+
+                        <button class="btn btn-outline-secondary"
+                                type="button"
+                                id="togglePassword"
+                                aria-label="Tampilkan kata sandi">
+                            <i class="bi bi-eye" id="iconPassword"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="form-check mb-3">
@@ -47,3 +62,22 @@ Tanggal buat    : 1-11-2026
         </div>
     </div>
 @endsection
+@push('scripts')
+<script>
+    const togglePassword = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+    const iconPassword = document.getElementById('iconPassword');
+
+    togglePassword.addEventListener('click', function () {
+        if (password.type === 'password') {
+            password.type = 'text';
+            iconPassword.classList.replace('bi-eye', 'bi-eye-slash');
+            togglePassword.setAttribute('aria-label', 'Sembunyikan kata sandi');
+        } else {
+            password.type = 'password';
+            iconPassword.classList.replace('bi-eye-slash', 'bi-eye');
+            togglePassword.setAttribute('aria-label', 'Tampilkan kata sandi');
+        }
+    });
+</script>
+@endpush

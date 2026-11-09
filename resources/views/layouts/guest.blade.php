@@ -17,6 +17,8 @@ Tanggal buat    : 1-11-2026
     <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.min.css') }}"
           rel="stylesheet">
     <link href="{{ asset('css/siakad.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/sweetalert2/sweetalert2.min.css') }}"
+          rel="stylesheet">
 </head>
 <body class="bg-body-tertiary">
     <main class="container min-vh-100 py-4
@@ -26,7 +28,9 @@ Tanggal buat    : 1-11-2026
         </div>
     </main>
 
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}">
-    </script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/sweetalert2/sweetalert2.all.min.js') }}"></script>
+    @include('layouts.partials.flash')
+    @stack('scripts')
 </body>
 </html>

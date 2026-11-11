@@ -1,36 +1,58 @@
+<!--
+Nama            : Naufal Afif
+NIM             : 3202416082
+Kelas           : 5C-TIF
+Nama file       : show.blade.php (mahasiswa)
+Tanggal buat    : 10-11-2026
+-->
+
 @extends('layouts.app')
 
-@section('content')
-    <x-page-header
-        judul="Detail Mahasiswa"
-        deskripsi="Informasi lengkap mahasiswa."
-    />
+@section('title', 'Detail Mahasiswa')
 
-    <div class="card shadow-sm">
-        <div class="card-header">
-            Detail Mahasiswa
+@section('content')
+    <x-page-header judul="Detail Mahasiswa"
+                   deskripsi="Informasi lengkap satu mahasiswa." />
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-body fw-semibold">
+            {{ $mahasiswa->nama }}
         </div>
 
         <div class="card-body">
-            <p>
-                <strong>NIM:</strong>
-                {{ $mahasiswa['nim'] }}
-            </p>
+            <dl class="row mb-3">
+                <dt class="col-sm-3">NIM</dt>
+                <dd class="col-sm-9">{{ $mahasiswa->nim }}</dd>
 
-            <p>
-                <strong>Nama:</strong>
-                {{ $mahasiswa['nama'] }}
-            </p>
+                <dt class="col-sm-3">Nama</dt>
+                <dd class="col-sm-9">{{ $mahasiswa->nama }}</dd>
 
-            <p>
-                <strong>Status:</strong>
-                {{ $mahasiswa['status'] }}
-            </p>
+                <dt class="col-sm-3">Jenis Kelamin</dt>
+                <dd class="col-sm-9">
+                    {{ $mahasiswa->jenis_kelamin === 'L' ? 'Laki-laki' : 'Perempuan' }}
+                </dd>
+
+                <dt class="col-sm-3">Email</dt>
+                <dd class="col-sm-9">{{ $mahasiswa->email }}</dd>
+
+                <dt class="col-sm-3">Angkatan</dt>
+                <dd class="col-sm-9">{{ $mahasiswa->angkatan }}</dd>
+
+                <dt class="col-sm-3">Program Studi</dt>
+                <dd class="col-sm-9">{{ $mahasiswa->program_studi }}</dd>
+            </dl>
 
             <a href="{{ route('mahasiswa.index') }}"
-               class="btn btn-secondary">
-                Kembali
+               class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Kembali
             </a>
+
+            @if (Auth::user()->role === 'admin')
+                <a href="{{ route('mahasiswa.edit', $mahasiswa) }}"
+                   class="btn btn-warning">
+                    <i class="bi bi-pencil-square"></i> Ubah
+                </a>
+            @endif
         </div>
     </div>
 @endsection
